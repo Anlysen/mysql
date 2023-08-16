@@ -67,7 +67,7 @@ $password = "";
 try {
     $conn = new PDO("mysql:host=$servername; dbname = testDB", $username, $password);
 
-    $sql = "CREATE DATABASE testBD2";
+    $sql = "CREATE DATABASE testDB";
     $conn->exec($sql);
     echo "Database created successfully!";
 } catch (PDOException $e) {
