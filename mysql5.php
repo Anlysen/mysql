@@ -1,53 +1,63 @@
 <?php
 
-// Создание БД
-$server_name = "Localhost"; // Создаем переменные
-$username = "root";
-$password = "";
+echo "<h1>Как получить последний ID</h1>";
 
-$conn = new mysqli($server_name, $username, $password);
-// Пробрасываем их в переменную с mysqli
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "testDB";
 
-if ($conn->connect_error) {
-    die ("Connection failed" . $conn->connect_error); // Сообщение об ошибке
-// Создаем условие, если происходит ошибка
-}
+// $conn = new mysqli($servername, $username, $password, $dbname);
 
-$sql ="CREATE DATABASE Spaces";
+// $sql = "INSERT INTO Users (name, surname, password)
+//         VALUES('John', 'Doc', '8765432')";
 
-if ($conn->query($sql) === TRUE) {
-    echo "Database created successfully!";
-} else {
-    echo "Error" . $conn->error;
-}
+// if ($conn->query($sql) == TRUE) {
+//         $last_id = $conn->insert_id;
+//         echo "last id " . $last_id;
+// }
 
-mysqli_close($conn);
+// $conn->close();
 
 
+// Процедурный вариант
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "testDB";
 
-// Создание таблицы
+// $conn = new mysqli($servername, $username, $password, $dbname);
+
+// $sql = "INSERT INTO Users (name, surname, password)
+//         VALUES('John', 'Doc', '8765432')";
+
+// if ($conn->query($sql) == TRUE) {
+//         $last_id = mysqli_insert_id($conn); // Дописываем mysqli_insert_id($conn)
+//         echo "last id " . $last_id;
+// }
+
+// $conn->close();
+
+
+
+// Объекто ориентированый вариант 
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "Spaces";
+$dbname = "testDB";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die ("Connection failed : " . $conn->connect_error);
+try {
+        $conn = new PDO ("mysql:host=$servername;dbname=$dbname", $username, $password,);
+        $sql = "INSERT INTO Users (name, surname, password)
+                VALUES ('alex', 'doe', '000000')";
+        $conn->exec($sql);
+        $last_id = $conn->lastInsertId();
+        echo "last id" . $last_id;
 }
 
-$sql = "CREATE TABLE Planets
-        erth VARCHAR (30) NOT NULL,
-        mars VARCHAR (30) NOT NULL PRIMARY KEY,
-        saturn VARCHAR (30) NOT NULL";
-
-if ($conn->query($sql) === TRUE) {
-    echo "Table created successfully!";
-} else {
-    echo "Error" .  $conn->error;
+catch (PDOException $e) {
+        echo $sql . $e->getMessage();
 }
-
-$conn->close();
-
+$conn = null;
 
 ?>
