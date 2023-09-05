@@ -1,5 +1,8 @@
 <?php
 
+echo "<h1>Практика №1</h1>";
+echo "<hr>";
+
 // Подключение к БД
 $servername = "localhost";
 $username = "root";
@@ -55,11 +58,30 @@ $conn = null;
 try {
     $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
     $sql = "INSERT INTO information (name, position, password)
-            VALUES (Andrew, PHP-developer, 03021993)";
+            VALUES ('Andrew', 'PHP-developer', 3021993)";
 
 $conn->exec($sql);
 echo "Record created";
 
+}
+
+catch (PDOException $e) {
+    echo $sql . $e->getMessage();
+}
+
+$conn = null;
+
+
+
+// Получаем последний ID
+try {
+    $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
+    $sql = "INSERT INTO information (name, position, password)
+            VALUES ('Thomas', 'QA-engineer', 'zh0041qaengineer85')";
+
+$conn->exec($sql);
+$last_id = $conn->lastInsertId();
+echo "Last ID" . $last_id;
 }
 
 catch (PDOException $e) {

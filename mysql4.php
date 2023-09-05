@@ -52,24 +52,24 @@ echo "<h1>Как добавлять данные в таблицу?!</h1>";
 
 
 // 3-й вариант
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "testDB";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "testDB";
 
-// try {
-//     $conn = new PDO ("mysql:host=$servername;dbname=$dbname", $username, $password);
+try {
+    $conn = new PDO ("mysql:host=$servername;dbname=$dbname", $username, $password);
 
-// $sql = "INSERT INTO users (name1, surname, passwords)
-//         VALUES('Andrew', 'Paxton1', 54321)";
-// $conn->exec($sql);
-// echo "Record created!";
-// }
-// catch (PDOException $e) {
-//     echo $sql . $e->getMessage();
-// }
+$sql = "INSERT INTO users (name1, surname, passwords)
+        VALUES('Andrew', 'Paxton1', 54321)";
+$conn->exec($sql);
+echo "Record created!";
+}
+catch (PDOException $e) {
+    echo $sql . $e->getMessage();
+}
 
-// $conn = null;
+$conn = null;
 
 
 ?>

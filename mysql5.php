@@ -41,23 +41,23 @@ echo "<h1>Как получить последний ID</h1>";
 
 
 // Объекто ориентированый вариант 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "testDB";
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "testDB";
 
-try {
-        $conn = new PDO ("mysql:host=$servername;dbname=$dbname", $username, $password,);
-        $sql = "INSERT INTO Users (name, surname, password)
-                VALUES ('alex', 'doe', '000000')";
-        $conn->exec($sql);
-        $last_id = $conn->lastInsertId();
-        echo "last id" . $last_id;
-}
+// try {
+//         $conn = new PDO ("mysql:host=$servername;dbname=$dbname", $username, $password,);
+//         $sql = "INSERT INTO Users (name, surname, password)
+//                 VALUES ('alex', 'doe', '000000')";
+//         $conn->exec($sql);
+//         $last_id = $conn->lastInsertId();
+//         echo "last id" . $last_id;
+// }
 
-catch (PDOException $e) {
-        echo $sql . $e->getMessage();
-}
-$conn = null;
+// catch (PDOException $e) {
+//         echo $sql . $e->getMessage();
+// }
+// $conn = null;
 
 ?>
