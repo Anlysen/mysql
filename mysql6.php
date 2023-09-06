@@ -91,4 +91,32 @@ catch (PDOException $e) {
 $conn = null;
 
 
+
+// Обновление данных
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+$sql = "UPDATE information SET name='Bill' WHERE name='Thomas'";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Record updated";
+}
+
+$conn->close();
+
+
+
+// REPLACE аналогична команде INSERT
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+$sql = "REPLACE INTO information VALUES
+            ('Carl', 'Web-designer', 'web_155560cl'),
+            ('Roy', 'Data Engineer', '44-data-833roy')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record";
+}
+
+$conn->close();
+
+
 ?>

@@ -28,7 +28,9 @@ if ($result->num_rows > 0) {
     }
 }
 
-
 $conn->close();
+
+
+// SELECT * FROM `Users` WHERE user_id IN (2, 7, 18); - выбрать определенные столбцы
 
 ?>
