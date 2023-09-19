@@ -96,6 +96,8 @@ $conn = null;
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 $sql = "UPDATE information SET name='Bill' WHERE name='Thomas'";
+// Обновить таблицу(название) > выбрать строку, которую переместить и написать ноаое имя
+// там, > где текущее имя
 
 if ($conn->query($sql) === TRUE) {
     echo "Record updated";
