@@ -28,7 +28,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // TRUNCATE TABLE - очищает всю таблицу
 // Удаление происходит быстрее, чем DELETE
-$sql = "TRUCATE TABLE Users";
+$sql = "TRUNCATE TABLE Users";
 if ($conn->query($sql) === TRUE) {
     echo "Record deleted";
 }
